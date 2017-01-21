@@ -5,8 +5,11 @@
  */
 package realestate;
 
-/**
- *
+/*rent will be tied to property---how do I do that? utilize them through
+foreign keys?
+would we be extending the Property.java file? In terms of using an interface how
+would we do so? My guess would be to make another file to 'extend' to the other files?
+
  * @author kunaa
  */
 public class RealEstate {

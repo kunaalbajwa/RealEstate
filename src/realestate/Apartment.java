@@ -5,12 +5,14 @@
  */
 package realestate;
 
-/*
- 
+/**
+ 600 sqft
+ $400
+ 1/dwelling
  * @author kunaa
  */
-public class Tenant {
+public class Apartment {
+      int sFoot;
     double rent;
-    String tenant_name;
-    String property;
+    //extend tenant here??
 }
