@@ -13,7 +13,7 @@ would we do so? My guess would be to make another file to 'extend' to the other 
  * @author kunaa
  */
 public class RealEstate {
-
+//database connection should start here
     /**
      * @param args the command line arguments
      */

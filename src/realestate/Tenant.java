@@ -13,4 +13,9 @@ public class Tenant {
     double rent;
     String tenant_name;
     String property;
+
+    public Tenant(String tenant_name, String property){
+    this.tenant_name=tenant_name;
+    this.property=property;
+    }
 }

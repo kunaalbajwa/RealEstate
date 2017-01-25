@@ -12,10 +12,13 @@ package realestate;
  * @author kunaa
  */
 public class Property {
-    double rent;
+   
     String propertyName;
     String address;
-    int number;
-    //use this as a boolean (mentally) to default to 0 to show if it is an 
+    //int number;
+    //^^use this as a boolean (mentally) to default to 0 to show if it is an 
     //aparment or not
+public String getAddress(){
+    return this.address;
+}
 }

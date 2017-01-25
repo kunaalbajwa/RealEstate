@@ -11,9 +11,32 @@ package realestate;
  1/dwelling
  * @author kunaa
  */
-public class Townhouse {
-    int sFoot;
-    double rent;
-    //extend tenant here??
+public class Townhouse extends Property {
+   int sFoot;
+   int number;
+   double rent;
+   
+   
+     //depending on how much info I want to be found out these two sub classses will be used
+ 
+   public Townhouse(int sFoot, int number, double rent){
+   this.sFoot=sFoot;
+   this.number=number;
+   this.rent=rent;
+  
+   }
+   public Townhouse(String PropName, String address, int sFoot, int number, double rent){
+    this.propertyName=PropName;
+    this.address=address;
+   this.sFoot=sFoot;
+   this.number=number;
+   this.rent=rent;
+  
+   }
+   public double getRent(){
+       return this.rent;
+       
     
+}
+
 }

@@ -11,8 +11,25 @@ package realestate;
  1/dwelling
  * @author kunaa
  */
-public class Apartment {
+public class Apartment extends Property{
       int sFoot;
     double rent;
-    //extend tenant here??
+    int number;
+    //
+    
+    
+    
+     public Apartment(String PropName, String address, int sFoot, int number, double rent){
+    this.propertyName=PropName;
+    this.address=address;
+   this.sFoot=sFoot;
+   this.number=number;
+   this.rent=rent;
+  
+   }
+     public double getRent(){
+       return this.rent;
+       
+    
+}
 }
