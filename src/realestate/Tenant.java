@@ -7,7 +7,11 @@ package realestate;
 
 /*
  
+ 6 total people: Vash Stampeede, Ken Shiro, Son Goku, Wong Feihung, 
+ * Yusuke Urameshi, Spike Speigel,
+ *
  * @author kunaa
+ 
  */
 public class Tenant {
     double rent;
