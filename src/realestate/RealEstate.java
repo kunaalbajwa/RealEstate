@@ -5,6 +5,8 @@
  */
 package realestate;
 
+import java.sql.SQLException;
+
 /*rent will be tied to property---how do I do that? utilize them through
 foreign keys?
 would we be extending the Property.java file? In terms of using an interface how
@@ -38,8 +40,12 @@ public class RealEstate {
  1/dwelling
     */
     //OR would I just invoke property_info and tenant_info
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         // TODO code application logic here
+    
+    Tenant Vash=new Tenant("Vash The Stampede", "Gunsmoke");
+    
+    
     }
     
 }
