@@ -31,7 +31,7 @@ public class Tenant {
       String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
       Class.forName(myDriver);
         // the mysql insert statement
-        try (Connection conn = DriverManager.getConnection(myUrl, "root", "")) {
+        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
             // the mysql insert statement
             String query = " insert into tenant_info (Name, Property, Rent)"
                     + " values (?, ?, ?)";
@@ -46,6 +46,8 @@ public class Tenant {
             
             // execute the preparedstatement
             preparedStmt.execute();
+            conn.close();
+            
         }
     }
     
