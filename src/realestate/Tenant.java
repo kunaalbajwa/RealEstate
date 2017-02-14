@@ -42,7 +42,7 @@ public class Tenant {
             preparedStmt.setString (2, this.property);
             preparedStmt.setDouble   (3, this.rent);
             //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
-            
+            //need a sql query on how to pull rent
             
             // execute the preparedstatement
             preparedStmt.execute();

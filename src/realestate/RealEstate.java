@@ -42,7 +42,7 @@ public class RealEstate {
     //OR would I just invoke property_info and tenant_info
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         // TODO code application logic here
-        
+         
     Townhouse Sphinx=new Townhouse("Sphinx", "Vcompound", 4, 666, 1200);
     Tenant Vash=new Tenant("Vash", "Gunsmoke");
     

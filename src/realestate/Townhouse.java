@@ -61,7 +61,7 @@ public class Townhouse extends Property {
    }
    public double getRent(){
        return this.rent;
-       
+       //if we have called it here we just need to hook it up with a SQL query
     
 }
 
