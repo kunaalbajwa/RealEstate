@@ -45,8 +45,9 @@ public class RealEstate {
          
     Townhouse Sphinx=new Townhouse("Sphinx", "Vcompound", 4, 666, 1200);
     Tenant Vash=new Tenant("Vash", "Gunsmoke");
-    
-    
+    Tenant Son_Goku=new Tenant("Son_Goku", "Planet_Vegeeta");
+
+    Apartment SnakeWay= new Apartment("SnakeWay","Outworld", 1600, 424, 800);
     }
     
 }
