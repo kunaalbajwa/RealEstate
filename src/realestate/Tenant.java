@@ -35,7 +35,8 @@ public class Tenant {
             // the mysql insert statement
             String query = " insert into tenant_info (Name, Property, Rent)"
                     + " values (?, ?, ?)";
-            
+//QUESTION: MAYBE USE THIS--                        UPDATE tenant_info;
+
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setString (1, this.tenant_name);
@@ -43,11 +44,11 @@ public class Tenant {
             preparedStmt.setDouble   (3, this.rent);
             //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
             //need a sql query on how to pull rent
-            
             // execute the preparedstatement
             preparedStmt.execute();
             conn.close();
-            
+            //QUESTION: should we put in an update clause for the sql queries for all files that have to update to the list?
+            //
         }
     }
     
