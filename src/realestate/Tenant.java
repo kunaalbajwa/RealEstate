@@ -34,6 +34,7 @@ public class Tenant {
         // the mysql insert statement
         try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
             String query = "SELECT Name from tenant_info WHERE Name= '" + this.tenant_name +"'";
+//this is to check if the name is already in database^^
             Statement Stmt = conn.createStatement();
             ResultSet Rs = Stmt.executeQuery(query);
 
