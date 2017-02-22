@@ -42,19 +42,33 @@ public class Townhouse extends Property {
         // the mysql insert statement
         try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
             // the mysql insert statement
-            String query = " insert into property_info (Number, Address, Rent)"
-                    + " values (?, ?, ?)";
+             String query = "SELECT Address from property_info WHERE Address= '" + this.address +"'";
+//this is to check if the name is already in database^^
+            Statement Stmt = conn.createStatement();
+            ResultSet Rs = Stmt.executeQuery(query);
+
+            if (Rs.next() && this.address.equals(Rs.getString("Address"))) {
+                System.out.println("WARNING: Property at " + this.address+ " already in Database");
+            } else {
+                
             
-            // create the mysql insert preparedstatement
+            query = " insert into property_info (Number, Address, Rent, Name)"
+                    + " values (?, ?, ?, ?)";
+            
+            // create the mysql insert preparedstatement 
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setInt (1, this.number);
             preparedStmt.setString (2, this.address);
             preparedStmt.setDouble   (3, this.rent);
+            preparedStmt.setString  (4, this.propertyName);
+                   
             //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
             
             
             // execute the preparedstatement
             preparedStmt.execute();
+            }
+            
             conn.close();
         }
    

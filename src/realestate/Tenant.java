@@ -41,7 +41,18 @@ public class Tenant {
             if (Rs.next() && this.tenant_name.equals(Rs.getString("Name"))) {
                 System.out.println("WARNING: Tenant Name " + this.tenant_name+ " already in Database");
             } else {
-
+//sql query pulling the rent:
+query = "SELECT Rent from property_info WHERE Name= '" + this.property +"'";
+//this is to check if the name is already in database^^
+             Stmt = conn.createStatement();
+             Rs = Stmt.executeQuery(query);
+             //read the results:
+             if (Rs.next()){
+                 this.rent=(Rs.getDouble("Rent"));
+             }
+             else {
+                 System.out.println("WARNING: No match in property found for " +this.property);
+             }
 // the mysql insert statement
                 query = " insert into tenant_info (Name, Property, Rent)"
                         + " values (?, ?, ?)";

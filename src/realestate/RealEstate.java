@@ -15,31 +15,8 @@ would we do so? My guess would be to make another file to 'extend' to the other 
  * @author kunaa
  */
 public class RealEstate {
-//database connection should start here
-    /*
-    //INSERT into Tenant?
-        double rent;
-    String tenant_name;
-    String property;
-
-    //INSERT into Property?
-    String propertyName;
-    String address;
-    
-    //INSERT into Townhouse?
-    int sFoot;
-    double rent;
-    int number;
- 1200 sqft
- $800
- 1/dwelling
-
-   //INSERT into Apartment?
-    600 sqft
- $400
- 1/dwelling
-    */
-    //OR would I just invoke property_info and tenant_info
+//add deleting phrase for the database to be reset to avoid repopulation
+    //tenant anmes and property names, make a list
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         // TODO code application logic here
          
@@ -48,6 +25,7 @@ public class RealEstate {
     Tenant Son_Goku=new Tenant("Son_Goku", "Planet_Vegeeta");
 
     Apartment SnakeWay= new Apartment("SnakeWay","Outworld", 1600, 424, 800);
+    Tenant Yusuke = new Tenant("Yusuke", "SnakeWay");
     }
     
 }
