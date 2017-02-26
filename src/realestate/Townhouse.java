@@ -59,8 +59,8 @@ public class Townhouse extends Property {
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setInt (1, this.number);
             preparedStmt.setString (2, this.address);
-            preparedStmt.setDouble   (3, this.rent);
-            preparedStmt.setString  (4, this.propertyName);
+            preparedStmt.setDouble (3, this.rent);
+            preparedStmt.setString (4, this.propertyName);
                    
             //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
             
