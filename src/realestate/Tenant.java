@@ -32,6 +32,7 @@ public class Tenant {
         String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
         Class.forName(myDriver);
         // the mysql insert statement
+        
         try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
             String query = "SELECT Name from tenant_info WHERE Name= '" + this.tenant_name +"'";
 //this is to check if the name is already in database^^

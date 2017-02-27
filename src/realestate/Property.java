@@ -15,13 +15,7 @@ public class Property {
     //aparment or not
     
     }
-    
-//plan for property.java:
-    //search property info for a property that matches the tenant's info
-    //SELECT rent from property _info WHERE Name= '" + this.propertyName +"'"
-    //if matched, set tenant rent to property rent
-    //if not , print warning and set rent to 0
-    
+ 
     /*
 public String getAddress(){
  //   return this.address;

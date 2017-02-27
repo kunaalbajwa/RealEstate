@@ -7,13 +7,38 @@ package realestate;
 
 import java.sql.SQLException;
 
-/*rent will be tied to property---how do I do that? utilize them through
-foreign keys?
-would we be extending the Property.java file? In terms of using an interface how
-would we do so? My guess would be to make another file to 'extend' to the other files?
-
- * @author kunaa
+/*
+  @author kunaa
  */
+/*
+
+"Would you like to move a tenant to a different location?"
+public moveTenantTown {
+this.moveTenantTown= will move tenant
+INSERT INTO different  row in property and tenant_info
+SELECT <columns> //or would it be rows?
+FROM apartment 
+WHERE <condition>; if query is done
+
+DELETE FROM Table1
+WHERE <condition>;
+
+COMMIT;
+
+}
+
+public moveTenantApt{
+INSERT INTO Apartment (<columns>)
+SELECT <columns>
+FROM Table1
+WHERE <condition>;
+
+DELETE FROM Table1
+WHERE <condition>;
+
+COMMIT;
+}
+*/
 public class RealEstate {
 //add deleting phrase for the database to be reset to avoid repopulation
     //tenant anmes and property names, make a list
@@ -55,5 +80,5 @@ Incorporate Tax?
 /*
 Questions:
 
-The rent is not changing on the tenant_info SQL
+The rent is not changing on the tenant_info SQL 2-26-17
 */
