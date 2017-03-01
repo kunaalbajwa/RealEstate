@@ -38,6 +38,10 @@ WHERE <condition>;
 
 COMMIT;
 }
+
+public changeRent{}
+public incInterest{}
+public removeInterest{}
 */
 public class RealEstate {
 //add deleting phrase for the database to be reset to avoid repopulation
@@ -81,4 +85,5 @@ Incorporate Tax?
 Questions:
 
 The rent is not changing on the tenant_info SQL 2-26-17
+would we place the functions in the static void main?
 */
