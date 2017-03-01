@@ -73,4 +73,72 @@ query = "SELECT Rent from property_info WHERE Name= '" + this.property +"'";
         }
     }
 
+    public  Boolean move(String property) throws ClassNotFoundException, SQLException{
+         String myDriver = "com.mysql.jdbc.Driver";
+        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
+        Class.forName(myDriver);
+        // the mysql insert statement
+        
+        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
+           
+//sql query pulling the rent:
+String query = "SELECT Rent from property_info WHERE Name= '" + property +"'";
+//this is to check if the name is already in database^^
+             Statement Stmt = conn.createStatement();
+             ResultSet Rs = Stmt.executeQuery(query);
+             //read the results:
+             if (Rs.next()){
+                 this.rent=(Rs.getDouble("Rent"));
+                 this.property=property;
+             query = "UPDATE tenant_info SET Rent=?, Property=? WHERE Name=?";
+
+                // create the mysql insert preparedstatement
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setString(3, this.tenant_name);
+                preparedStmt.setString(2, this.property);
+                preparedStmt.setDouble(1, this.rent);
+                //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
+                //need a sql query on how to pull rent
+                // execute the preparedstatement
+                preparedStmt.execute();
+             }
+             else {
+             return false;
+             }
+                conn.close();
+        }
+                return true;
+     
 }
+}
+
+/*
+
+"Would you like to move a tenant to a different location?"
+public moveTenantTown {
+this.moveTenantTown= will move tenant
+INSERT INTO different  row in property and tenant_info
+SELECT <columns> //or would it be rows?
+FROM apartment 
+WHERE <condition>; if query is done
+
+DELETE FROM Table1
+WHERE <condition>;
+
+COMMIT;
+
+}
+
+public moveTenantApt{
+INSERT INTO Apartment (<columns>)
+SELECT <columns>
+FROM Table1
+WHERE <condition>;
+
+DELETE FROM Table1
+WHERE <condition>;
+
+COMMIT;
+}
+    */
+    

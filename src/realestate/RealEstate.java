@@ -5,7 +5,12 @@
  */
 package realestate;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /*
   @author kunaa
@@ -49,17 +54,41 @@ public class RealEstate {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         // TODO code application logic here
          //identify the townhouse, tenant or apartment; then the second input is the address/property
-    Townhouse Sphinx=new Townhouse("Sphinx", "East_Vcompound_St", 4, 666, 1200);
+   cleanSlate();
+   Townhouse Sphinx=new Townhouse("Sphinx", "East_Vcompound_St", 4, 666, 1200);
     Apartment DemonWorld= new Apartment("Demonworld","MakaiRealm_Ln", 1600, 424, 800);
-    Tenant Yusuke = new Tenant("Yusuke", "MakaiRealm_Ln");
-    Tenant Vash=new Tenant("Vash", "East_Vcompound_St");
-    Tenant Son_Goku=new Tenant("Son_Goku", "MakaiRealm_Ln");
-    Tenant Meliodas= new Tenant("Meliodas", "East_Vcompound_St");
+    Tenant Yusuke = new Tenant("Yusuke", "Demonworld");
+    Tenant Vash=new Tenant("Vash", "Sphinx");
+    Tenant Son_Goku=new Tenant("Son_Goku", "Demonworld");
+    Tenant Meliodas= new Tenant("Meliodas", "Sphinx");
     
+    if(!Meliodas.move("Demonworld"))
+    System.out.println("Dammit that's wrong.");
+        }
+    
+    
+    
+    public static void cleanSlate() throws ClassNotFoundException, SQLException{
+         String myDriver = "com.mysql.jdbc.Driver";
+        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
+        Class.forName(myDriver);
+        // the mysql insert statement
+        
+        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
+            String query = "DELETE FROM tenant_info WHERE rent>'0'";
+//this is to check if the name is already in database^^
+            Statement Stmt = conn.createStatement();
+            Stmt.execute(query);
+ query = "DELETE FROM property_info WHERE rent>'0'";
+//this is to check if the name is already in database^^
+            Stmt = conn.createStatement();
+            Stmt.execute(query);
+            
+            conn.close();
     }
-    
+    }
 }
-/*
+    /*
 
 delete from tenant_info where rent > 0;
 delete from property_info where rent > 0;
