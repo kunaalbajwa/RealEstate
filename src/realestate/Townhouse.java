@@ -15,32 +15,28 @@ import java.sql.*;
  * @author kunaa
  */
 public class Townhouse extends Property {
-   int sFoot;
+   int sqFoot;
    int number;
    double rent;
    
    
      //depending on how much info I want to be found out these two sub classses will be used
  
-   public Townhouse(int sFoot, int number, double rent){
-   this.sFoot=sFoot;
+   public Townhouse(int sqFoot, int number, double rent){
+   this.sqFoot=sqFoot;
    this.number=number;
    this.rent=rent;
   
    }
-   public Townhouse(String PropName, String address, int sFoot, int number, double rent) throws ClassNotFoundException, SQLException{
+   public Townhouse(String PropName, String address, int sqFoot, int number, double rent, Connection conn) throws SQLException{
     this.propertyName=PropName;
     this.address=address;
-   this.sFoot=sFoot;
+   this.sqFoot=sqFoot;
    this.number=number;
    this.rent=rent;
   
    //sql insert
-        String myDriver = "com.mysql.jdbc.Driver";
-      String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
-      Class.forName(myDriver);
-        // the mysql insert statement
-        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
+    
             // the mysql insert statement
              String query = "SELECT Address from property_info WHERE Address= '" + this.address +"'";
 //this is to check if the name is already in database^^
@@ -52,8 +48,8 @@ public class Townhouse extends Property {
             } else {
                 
             
-            query = " insert into property_info (Number, Address, Rent, Name)"
-                    + " values (?, ?, ?, ?)";
+            query = " insert into property_info (Number, Address, Rent, Name, SqFoot)"
+                    + " values (?, ?, ?, ?, ?)";
             
             // create the mysql insert preparedstatement 
             PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -61,6 +57,7 @@ public class Townhouse extends Property {
             preparedStmt.setString (2, this.address);
             preparedStmt.setDouble (3, this.rent);
             preparedStmt.setString (4, this.propertyName);
+            preparedStmt.setInt(5, this.sqFoot);
                    
             //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
             
@@ -69,8 +66,8 @@ public class Townhouse extends Property {
             preparedStmt.execute();
             }
             
-            conn.close();
-        }
+            
+        
    
    }
    public double getRent(){
@@ -78,5 +75,11 @@ public class Townhouse extends Property {
        //if we have called it here we just need to hook it up with a SQL query
     
 }
-
+/*
+   public double propertyTax(double taxRate){
+    double propertyTax;
+    propertyTax= ;
+    }  
+*/
+   
 }

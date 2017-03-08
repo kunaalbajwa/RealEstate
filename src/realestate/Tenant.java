@@ -21,19 +21,13 @@ public class Tenant {
     String tenant_name;
     String property;
 
-    public Tenant(String tenant_name, String property) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public Tenant(String tenant_name, String property, Connection conn) throws SQLException{
         this.tenant_name = tenant_name;
         this.property = property;
         this.rent = 600;
         //^^placeholder for time being
 
         //sql insert
-        String myDriver = "com.mysql.jdbc.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
-        Class.forName(myDriver);
-        // the mysql insert statement
-        
-        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
             String query = "SELECT Name from tenant_info WHERE Name= '" + this.tenant_name +"'";
 //this is to check if the name is already in database^^
             Statement Stmt = conn.createStatement();
@@ -64,23 +58,16 @@ query = "SELECT Rent from property_info WHERE Name= '" + this.property +"'";
                 preparedStmt.setString(2, this.property);
                 preparedStmt.setDouble(3, this.rent);
                 //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
-                //need a sql query on how to pull rent
+                
                 // execute the preparedstatement
                 preparedStmt.execute();
             }
-            conn.close();
-            //
-        }
+            
+        
     }
 
-    public  Boolean move(String property) throws ClassNotFoundException, SQLException{
-         String myDriver = "com.mysql.jdbc.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
-        Class.forName(myDriver);
-        // the mysql insert statement
+    public  Boolean move(String property, Connection conn) throws SQLException{
         
-        try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
-           
 //sql query pulling the rent:
 String query = "SELECT Rent from property_info WHERE Name= '" + property +"'";
 //this is to check if the name is already in database^^
@@ -91,37 +78,25 @@ String query = "SELECT Rent from property_info WHERE Name= '" + property +"'";
                  this.rent=(Rs.getDouble("Rent"));
                  this.property=property;
              query = "UPDATE tenant_info SET Rent=?, Property=? WHERE Name=?";
-
+//updates the move and rent here^^
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setString(3, this.tenant_name);
                 preparedStmt.setString(2, this.property);
                 preparedStmt.setDouble(1, this.rent);
                 //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
-                //need a sql query on how to pull rent
-                
+                 
 // execute the preparedstatement
                 preparedStmt.execute();
              }
              else {
              return false;
              }
-                conn.close();
-        }
+                
                 return true;
      
 }
-/*
-public propertyTax(Double ){
-    double propertyTax;
-    propertyTax= 0.75;
-    }
- String myDriver = "com.mysql.jdbc.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
-        Class.forName(myDriver)   
-            try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
-String query= "Update tenant_info Set propertyTax * this.rent;
-  */  
+
 
 }
  
