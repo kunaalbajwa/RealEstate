@@ -99,7 +99,8 @@ String query = "SELECT Rent from property_info WHERE Name= '" + property +"'";
                 preparedStmt.setDouble(1, this.rent);
                 //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
                 //need a sql query on how to pull rent
-                // execute the preparedstatement
+                
+// execute the preparedstatement
                 preparedStmt.execute();
              }
              else {
@@ -110,35 +111,17 @@ String query = "SELECT Rent from property_info WHERE Name= '" + property +"'";
                 return true;
      
 }
-}
-
 /*
-
-"Would you like to move a tenant to a different location?"
-public moveTenantTown {
-this.moveTenantTown= will move tenant
-INSERT INTO different  row in property and tenant_info
-SELECT <columns> //or would it be rows?
-FROM apartment 
-WHERE <condition>; if query is done
-
-DELETE FROM Table1
-WHERE <condition>;
-
-COMMIT;
+public propertyTax(Double ){
+    double propertyTax;
+    propertyTax= 0.75;
+    }
+ String myDriver = "com.mysql.jdbc.Driver";
+        String myUrl = "jdbc:mysql://localhost:3306/mynewdatabase";
+        Class.forName(myDriver)   
+            try (Connection conn = DriverManager.getConnection(myUrl, "kunaalbajwa", "Demonruler1")) {
+String query= "Update tenant_info Set propertyTax * this.rent;
+  */  
 
 }
-
-public moveTenantApt{
-INSERT INTO Apartment (<columns>)
-SELECT <columns>
-FROM Table1
-WHERE <condition>;
-
-DELETE FROM Table1
-WHERE <condition>;
-
-COMMIT;
-}
-    */
-    
+ 
