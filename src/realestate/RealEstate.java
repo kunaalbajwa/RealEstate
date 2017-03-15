@@ -7,12 +7,6 @@ package realestate;
 
 import java.sql.*;
 
-/*
-
-public changeRent{}
-public incInterest{}
-public removeInterest{}
- */
 public class RealEstate {
 //add deleting phrase for the database to be reset to avoid repopulation
     //tenant anmes and property names, make a list
@@ -46,11 +40,11 @@ public class RealEstate {
 
     public static void cleanSlate(Connection conn) throws SQLException{
      
-            String query = "DELETE FROM tenant_info WHERE rent>'0'";
+            String query = "DELETE FROM tenant_info WHERE rent>='0'";
 //this is to check if the name is already in database^^
             Statement Stmt = conn.createStatement();
             Stmt.execute(query);
-            query = "DELETE FROM property_info WHERE rent>'0'";
+            query = "DELETE FROM property_info WHERE rent>='0'";
 //this is to check if the name is already in database^^
             Stmt = conn.createStatement();
             Stmt.execute(query);

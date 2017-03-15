@@ -9,9 +9,7 @@ import java.sql.*;
 
 
 /**
- 1200 sqft
- $800
- 1/dwelling
+
  * @author kunaa
  */
 public class Townhouse extends Property {
