@@ -20,7 +20,33 @@ public class Tenant {
     double rent;
     String tenant_name;
     String property;
+    
+    public Tenant(String tenant_name, Connection conn) throws SQLException{
+    this.tenant_name= tenant_name;
+    this.property = "";
+    this.rent=0;
+    String query = "SELECT Name from tenant_info WHERE Name= '" + this.tenant_name +"'";
+//this is to check if the name is already in database^^
+            Statement Stmt = conn.createStatement();
+            ResultSet Rs = Stmt.executeQuery(query);
 
+            if (Rs.next() && this.tenant_name.equals(Rs.getString("Name"))) {
+                System.out.println("WARNING: Tenant Name " + this.tenant_name+ " already in Database");
+            } else {
+  query = " insert into tenant_info (Name, Property, Rent)"
+                        + " values (?, ?, ?)";
+
+                // create the mysql insert preparedstatement
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setString(1, this.tenant_name);
+                preparedStmt.setString(2, this.property);
+                preparedStmt.setDouble(3, this.rent);
+                //eventually ahve to figure out rent before we put this.rent in; for now keep it arbitrary
+                
+                // execute the preparedstatement
+                preparedStmt.execute();
+            }
+    }
     public Tenant(String tenant_name, String property, Connection conn) throws SQLException{
         this.tenant_name = tenant_name;
         this.property = property;
