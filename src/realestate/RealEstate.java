@@ -26,15 +26,17 @@ public class RealEstate {
             cleanSlate(conn);
             Townhouse Sphinx = new Townhouse("Sphinx", "East_Vcompound_St", 4000, 666, 1200.00, conn);
             Apartment DemonWorld = new Apartment("DemonWorld", "MakaiRealm_Ln", 1600, 424, 800.00, conn);
-            
-            Tenant Yusuke = new Tenant("Yusuke", "DemonWorld", conn);
-            Tenant Vash = new Tenant("Vash", "Sphinx", conn);
-            Tenant Son_Goku = new Tenant("Son_Goku", "DemonWorld", conn);
-            Tenant Meliodas = new Tenant("Meliodas", "Sphinx", conn);
+            Tenant Son_Goku = new Tenant("Son_Goku", "DemonWorld", "9001", conn);
+            Tenant Yusuke = new Tenant("Yusuke", "DemonWorld", "9003",  conn);
+            Tenant Vash = new Tenant("Vash", "Sphinx", "9004", conn);
+            Tenant Meliodas = new Tenant("Meliodas", "Sphinx", "9002", conn);
             
             if (!Meliodas.move("DemonWorld", conn)) {
                 System.out.println("Dammit Jim that's not a brick layer!");
             }
+
+            Son_Goku.payRent(750.0, conn);
+Yusuke.billRent(conn);
 String Username;            
 Username = login(conn);
     conn.close();
@@ -57,11 +59,12 @@ Username = login(conn);
                 Username=username;
             } 
             else
-                    System.out.println("This is not a username mane");
+                    System.out.println("This is not a username...");
     //else THIS IS NOT A USERNAME 
     }
+    //give a query for  password and a check for the passwords for it from the databases; keep a count and then kick them back or 
+     return Username;
     
-    return Username;
     }
 
     private static void cleanSlate(Connection conn) throws SQLException{
@@ -92,10 +95,9 @@ Planet_Vegeeta_Dr
  */
 
  /*
-Functions to enable:
-
-Incorporate Tax??
-
+ magic rent button for the landlord; tenant can check how much is owed 
+menu option 
+password
  */
 
 
